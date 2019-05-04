@@ -1,35 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 
-import { ClientContext } from '../../App';
-import { FindProjectOrderDatesRequest } from '../../proto/supply_pb';
-import { useGrpc } from '../../hooks/useGrpc';
 import { groupBy } from '../../utils/group-by';
 
-export const OrdersList = ({ setCurrentOrder }) => {
-  const client = useContext(ClientContext);
-
-  const findProjectOrderDates = async ({ id }) => {
-    const request = new FindProjectOrderDatesRequest();
-    request.setProjectId(id);
-
-    return await client.findProjectOrderDates(request, {});
-  };
-
-  const [data, error, loading, makeRequest] = useGrpc('null');
-  const orders = data.ordersList;
-
-  useEffect(() => {
-    makeRequest(findProjectOrderDates, { id: '' });
-  }, []);
-
-  if (loading) {
-    return <div className="">Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="">Error: {error.message}</div>;
-  }
-
+export const OrdersList = ({ orders, setCurrentOrder }) => {
   const orderDate = order => new Date(order.date * 1000).toDateString();
   const groupByDate = groupBy(orderDate);
   const groupedOrdersByDate = groupByDate(orders);
@@ -79,7 +52,7 @@ const OrderSummaryItem = ({ order, setCurrentOrder }) => {
   return (
     <tr className="cursor-pointer hover:bg-blue-lightest" onClick={() => setCurrentOrder(order.id)}>
       <td className="text-left">{order.projectName}</td>
-      <td className={status}>{order.status}</td>
+      <td className={status}>{order.status === 'Sent' ? 'New!' : order.status}</td>
     </tr>
   );
 };
