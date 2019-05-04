@@ -40,9 +40,10 @@ export const Order = ({ id, refetchDates }) => {
   }
 
   const orderDate = order => new Date(order.date * 1000).toDateString();
-  const orderItems = order.itemsList.map(item => (
-    <Item item={item} status={order.status} key={item.product.id} />
-  ));
+
+  const orderItems = order.itemsList
+    .sort((a, b) => a.product.name.localeCompare(b.product.name))
+    .map(item => <Item item={item} status={order.status} key={item.product.id} />);
 
   const handleClick = async () => {
     await makeRequest(processOrder, { id: order.id });

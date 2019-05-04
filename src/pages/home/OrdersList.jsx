@@ -47,7 +47,7 @@ const OrderDates = ({ date, groupedOrdersByDate, setCurrentOrder }) => {
 };
 
 const OrderSummaryItem = ({ order, setCurrentOrder }) => {
-  const status = `text-right ${order.status === 'New!' && 'text-red font-bold'}`;
+  const status = `text-right ${order.status === 'Sent' && 'text-red font-bold'}`;
 
   return (
     <tr className="cursor-pointer hover:bg-blue-lightest" onClick={() => setCurrentOrder(order.id)}>
