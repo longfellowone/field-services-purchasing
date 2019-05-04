@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="content-center">
-        <header className="min-h-screen flex flex-col items-center justify-center text-2xl">
-          <img
-            src={logo}
-            className="h-48 pointer-events-none App-logo"
-            alt="logo"
-          />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
+import { Home } from './pages/home/Home';
+import { SupplyPromiseClient } from './proto/supply_grpc_web_pb';
+
+const client = new SupplyPromiseClient('http://localhost:8080');
+export const ClientContext = React.createContext();
+
+function App() {
+  return (
+    <ClientContext.Provider value={client}>
+      <Home />
+    </ClientContext.Provider>
+  );
 }
 
 export default App;
