@@ -40,7 +40,9 @@ export const Order = ({ id, refetchDates }) => {
   }
 
   const orderDate = order => new Date(order.date * 1000).toDateString();
-  const orderItems = order.itemsList.map(item => <Item item={item} key={item.product.id} />);
+  const orderItems = order.itemsList.map(item => (
+    <Item item={item} status={order.status} key={item.product.id} />
+  ));
 
   const handleClick = async () => {
     await makeRequest(processOrder, { id: order.id });
@@ -63,7 +65,7 @@ export const Order = ({ id, refetchDates }) => {
           <div>
             {order.status === 'Sent' && (
               <button
-                className="bg-green p-2 font-bold text-white rounded shadow-md border border-green-dark"
+                className="bg-green p-2 font-bold text-white rounded shadow-md border"
                 onClick={handleClick}
               >
                 Mark Processed
@@ -85,7 +87,7 @@ export const Order = ({ id, refetchDates }) => {
               <th className="w-8 text-right">Requested</th>
               <th className="w-8">U</th>
               <th className="text-left">Product</th>
-              <th className="text-right">Status</th>
+              <th className="text-right">{order.status !== 'Sent' && 'Status'}</th>
             </tr>
           </thead>
           <tbody>{orderItems}</tbody>
@@ -95,13 +97,13 @@ export const Order = ({ id, refetchDates }) => {
   );
 };
 
-const Item = ({ item }) => {
+const Item = ({ item, status }) => {
   return (
     <tr>
       <td className="text-right">{item.quantityRequested}</td>
       <td className="font-bold">{item.product.uom}</td>
       <td>{item.product.name}</td>
-      <td className="text-right">{item.itemStatus !== 'Waiting' && item.itemStatus}</td>
+      <td className="text-right">{status !== 'Sent' && item.itemStatus}</td>
     </tr>
   );
 };
