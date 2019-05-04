@@ -2,7 +2,7 @@ import { useReducer, useRef, useEffect } from 'react';
 
 export const useGrpc = initialData => {
   const [state, dispatch] = useReducer(requestReducer, {
-    isLoading: false,
+    isLoading: true,
     isError: false,
     data: initialData,
   });
