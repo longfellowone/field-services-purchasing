@@ -1,5 +1,4 @@
 FROM node:alpine as builder
-RUN apk add --no-cache git
 
 WORKDIR /builder
 
