@@ -56,11 +56,12 @@ export const Order = ({ id, refetchDates }) => {
         <div className="px-2 py-1 font-bold bg-blue text-blue-lightest">
           <div className="py-1">Order Details ({order.id})</div>
         </div>
-        <div className="mt-2 px-2 leading-normal flex justify-between items-center">
+        <div className="mt-2 px-2 leading-normal flex justify-between">
           <div>
             <div>
               {order.project.name} - {order.status}
             </div>
+            <div>{order.project.foremanEmail}</div>
             <div>{orderDate(order)}</div>
           </div>
           <div>

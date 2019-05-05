@@ -3045,6 +3045,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
     var obj = {
       id: jspb.Message.getFieldWithDefault(msg, 1, ''),
       name: jspb.Message.getFieldWithDefault(msg, 2, ''),
+      foreman: jspb.Message.getFieldWithDefault(msg, 3, ''),
+      foremanEmail: jspb.Message.getFieldWithDefault(msg, 4, ''),
     };
 
     if (includeInstance) {
@@ -3087,6 +3089,14 @@ proto.server.Project.deserializeBinaryFromReader = function(msg, reader) {
         var value = /** @type {string} */ (reader.readString());
         msg.setName(value);
         break;
+      case 3:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setForeman(value);
+        break;
+      case 4:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setForemanEmail(value);
+        break;
       default:
         reader.skipField();
         break;
@@ -3122,6 +3132,14 @@ proto.server.Project.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(2, f);
   }
+  f = message.getForeman();
+  if (f.length > 0) {
+    writer.writeString(3, f);
+  }
+  f = message.getForemanEmail();
+  if (f.length > 0) {
+    writer.writeString(4, f);
+  }
 };
 
 /**
@@ -3148,6 +3166,32 @@ proto.server.Project.prototype.getName = function() {
 /** @param {string} value */
 proto.server.Project.prototype.setName = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+/**
+ * optional string foreman = 3;
+ * @return {string}
+ */
+proto.server.Project.prototype.getForeman = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''));
+};
+
+/** @param {string} value */
+proto.server.Project.prototype.setForeman = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+/**
+ * optional string foreman_email = 4;
+ * @return {string}
+ */
+proto.server.Project.prototype.getForemanEmail = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ''));
+};
+
+/** @param {string} value */
+proto.server.Project.prototype.setForemanEmail = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {

@@ -102,6 +102,8 @@ message Order {
 message Project {
     string id = 1;
     string name = 2;
+    string foreman = 3;
+    string foreman_email = 4;
 }
 
 // An order item
@@ -199,9 +201,9 @@ protoc --go_out=plugins=grpc:. *.proto
  */
 
 /** Generate JS proto
- protoc -I=. ./src/proto/supply.proto \
-  --js_out=import_style=commonjs:./src/proto/ \
-  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src/proto/
+ protoc -I=. ./proto/supply.proto \
+  --js_out=import_style=commonjs:./src/Order\
+  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src/Order
  */
 
 //  import _"github.com/jnewmano/grpc-json-proxy/codec"
