@@ -1,4 +1,4 @@
-# Field Services Purchasing Client
+## Field Services Purchasing Client
 
 ReactJS and gRPC-Web client
 
@@ -17,11 +17,11 @@ Mobile client: [field-services-mobile](https://github.com/longfellowone/field-se
 
 After starting the Golang server. Use the following commands in the root directory
 
-#### \$ npm i
+#### `npm i`
 
 To install node_modules
 
-#### \$ npm start
+#### `npm start`
 
 To start the client on http://localhost:3000/
 
