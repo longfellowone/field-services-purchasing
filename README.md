@@ -2,7 +2,7 @@
 
 ReactJS and gRPC-Web client
 
-Golang server: [field-services-purchasing](https://github.com/longfellowone/field-services)
+Golang server: [field-services](https://github.com/longfellowone/field-services)
 
 - Golang
 - Postgres
@@ -17,11 +17,11 @@ Mobile client: [field-services-mobile](https://github.com/longfellowone/field-se
 
 After starting the Golang server. Use the following commands in the root directory
 
-##### \$ npm i
+#### \$ npm i
 
 To install node_modules
 
-##### \$ npm start
+#### \$ npm start
 
 To start the client on http://localhost:3000/
 
